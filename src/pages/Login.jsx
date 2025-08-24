@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Login = ({ setUser }) => {
   const [email, setEmail] = useState("");
@@ -21,6 +22,7 @@ const Login = ({ setUser }) => {
       setUser(res.data.user);
 
       // ✅ redirect to dashboard ("/")
+      toast.success("Logged in successfully")
       navigate("/");
     } catch (err) {
       setError(err.response?.data?.message || "Login failed");
